@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomSearchIcon extends StatelessWidget {
   const CustomSearchIcon({super.key});
@@ -14,9 +15,9 @@ class CustomSearchIcon extends StatelessWidget {
       ),
       child: const Center(
         child: Icon(
-          Icons.search_rounded,
+          FontAwesomeIcons.magnifyingGlass,
           color: Colors.white,
-          size: 25,
+          size: 15,
         ),
       ),
     );
