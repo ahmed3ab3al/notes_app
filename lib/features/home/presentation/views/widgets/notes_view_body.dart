@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:notes_app/features/home/presentation/views/widgets/custom_appbar.dart';
 import 'package:notes_app/features/home/presentation/views/widgets/custom_notes_list_view.dart';
 
@@ -7,14 +8,18 @@ class NotesViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20),
+    return  Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: SafeArea(
         child: Column(
           children: [
-            SizedBox(height: 15,),
-            CustomAppbar(),
-           Expanded(child: CustomNotesListView()),
+            const SizedBox(height: 15,),
+            CustomAppbar(
+              onTap: (){},
+              title: 'Notes',
+              icon:  FontAwesomeIcons.magnifyingGlass,
+            ),
+           const Expanded(child: CustomNotesListView()),
 
           ],
         ),

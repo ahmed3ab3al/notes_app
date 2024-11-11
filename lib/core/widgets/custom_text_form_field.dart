@@ -3,9 +3,10 @@ import 'package:notes_app/core/utils/colors.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField(
-      {super.key, required this.hintText, this.maxLines = 1});
+      {super.key, required this.hintText, this.maxLines = 1, required this.color});
   final String hintText;
   final int maxLines;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class CustomTextFormField extends StatelessWidget {
       maxLines: maxLines,
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: const TextStyle(color: AppColors.primary),
+        hintStyle:  TextStyle(color:color),
         border: buildOutlineInputBorder(),
         enabledBorder: buildOutlineInputBorder(),
         focusedBorder: buildOutlineInputBorder(AppColors.primary),

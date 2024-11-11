@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/core/utils/colors.dart';
 import 'package:notes_app/core/widgets/custom_text_form_field.dart';
 import 'package:notes_app/features/home/presentation/views/widgets/custom_Button.dart';
 
@@ -15,13 +16,15 @@ class CustomNoteSheet extends StatelessWidget {
               SizedBox(
                 height: 16,
               ),
-              CustomTextFormField(hintText: 'Title'),
+              CustomTextFormField(hintText: 'Title',
+              color: AppColors.primary,),
               SizedBox(
                 height: 16,
               ),
               CustomTextFormField(
                 hintText: 'Content',
                 maxLines: 5,
+                color: AppColors.primary,
               ),
               SizedBox(
                 height: 128,
