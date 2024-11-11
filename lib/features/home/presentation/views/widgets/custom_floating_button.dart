@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:notes_app/core/utils/colors.dart';
 
 class CustomFloatingButton extends StatelessWidget {
   final VoidCallback onTap;
@@ -15,7 +16,7 @@ class CustomFloatingButton extends StatelessWidget {
           width: 58,
           height: 58,
           decoration: BoxDecoration(
-            color: Colors.cyanAccent.shade400,
+            color:AppColors.primary,
             borderRadius: BorderRadius.circular(30),
           ),
           child: const Icon(
