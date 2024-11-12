@@ -3,6 +3,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:notes_app/features/home/presentation/views/notes_view.dart';
 
 void main() async {
+
   await Hive.initFlutter();
 
   await Hive.openBox('notes_box');
