@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:notes_app/core/utils/colors.dart';
+import 'package:notes_app/core/utils/validator.dart';
 import 'package:notes_app/core/widgets/custom_text_form_field.dart';
 import 'package:notes_app/features/home/presentation/views/widgets/custom_appbar.dart';
 
 class EditViewBody extends StatelessWidget {
-  const EditViewBody({super.key});
+   EditViewBody({super.key});
+
+
+  final TextEditingController titleController = TextEditingController();
+  final TextEditingController contentController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +31,22 @@ class EditViewBody extends StatelessWidget {
           const SizedBox(
             height: 16,
           ),
-          const CustomTextFormField(hintText: 'Title',
+          CustomTextFormField(
+            errorColor: Colors.red,
+            validator: (val) =>
+                AppValidators.validateText(titleController.text),
+            customController: titleController,
+
+            hintText: 'Title',
             color:Colors.white,),
           const SizedBox(
             height: 16,
           ),
-          const CustomTextFormField(
+           CustomTextFormField(
+             errorColor: Colors.red,
+            validator: (val) =>
+                AppValidators.validateText(contentController.text),
+            customController: contentController,
             hintText: 'Content',
             maxLines: 5,
               color:AppColors.primary,),
