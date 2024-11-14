@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/core/utils/colors.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({super.key, required this.onTap});
+  const CustomButton({super.key, required this.onTap, this.isLoading = false});
   final VoidCallback onTap;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:notes_app/core/utils/colors.dart';
 import 'package:notes_app/core/utils/validator.dart';
 import 'package:notes_app/core/widgets/custom_text_form_field.dart';
@@ -26,79 +25,85 @@ class _CustomNoteSheetState extends State<CustomNoteSheet> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AddNoteCubit, AddNoteState>(
-      listener: (context, state) {
-        if (state is AddNoteFailure) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(state.errorMessage),
-            ),
-          );
-        }
-        if (state is AddNoteSuccess) {
-          Navigator.pop(context);
-        }
-      },
-      builder: (context, state) {
-        return ModalProgressHUD(
-          inAsyncCall: state is AddNoteLoading ? true : false,
-          child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: SingleChildScrollView(
-                child: Form(
-                  key: formKey,
-                  autovalidateMode: autoValidateMode,
-                  child: Column(
-                    children: [
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      CustomTextFormField(
-                        errorColor: Colors.red,
-                        validator: (val) =>
-                            AppValidators.validateText(titleController.text),
-                        customController: titleController,
-                        hintText: 'Title',
-                        color: AppColors.primary,),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      CustomTextFormField(
-                        errorColor: Colors.red,
-                        validator: (val) =>
-                            AppValidators.validateText(contentController.text),
-                        customController: contentController,
-                        hintText: 'Content',
-                        maxLines: 5,
-                        color: AppColors.primary,
-                      ),
-                      const SizedBox(
-                        height: 128,
-                      ),
-                      CustomButton(
-                        onTap: () {
-                          if (formKey.currentState!.validate()) {
-                            formKey.currentState!.save();
-                            var noteModel = NoteMode(
-                                title: titleController.text,
-                                content: contentController.text,
-                                date: DateTime.now().toString(), color: Colors.blue.value);
-                            AddNoteCubit.get(context).addNote(noteModel);
-                          } else {
-                            autoValidateMode = AutovalidateMode.always;
-                            setState(() {});
-                          }
-                        },
-                      ),
-                      const SizedBox(
-                        height: 32,
-                      ),
-                    ],
+    return BlocProvider(
+      create: (context) => AddNoteCubit(),
+      child: BlocConsumer<AddNoteCubit, AddNoteState>(
+        listener: (context, state) {
+          if (state is AddNoteFailure) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.errorMessage),
+              ),
+            );
+          }
+          if (state is AddNoteSuccess) {
+            Navigator.pop(context);
+          }
+        },
+        builder: (context, state) {
+          return AbsorbPointer(
+            absorbing: state is AddNoteLoading ? true : false,
+            child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: SingleChildScrollView(
+                  child: Form(
+                    key: formKey,
+                    autovalidateMode: autoValidateMode,
+                    child: Column(
+                      children: [
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        CustomTextFormField(
+                          errorColor: Colors.red,
+                          validator: (val) =>
+                              AppValidators.validateText(titleController.text),
+                          customController: titleController,
+                          hintText: 'Title',
+                          color: AppColors.primary,),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        CustomTextFormField(
+                          errorColor: Colors.red,
+                          validator: (val) =>
+                              AppValidators.validateText(
+                                  contentController.text),
+                          customController: contentController,
+                          hintText: 'Content',
+                          maxLines: 5,
+                          color: AppColors.primary,
+                        ),
+                        const SizedBox(
+                          height: 128,
+                        ),
+                        CustomButton(
+                          isLoading: state is AddNoteLoading ? true : false,
+                          onTap: () {
+                            if (formKey.currentState!.validate()) {
+                              formKey.currentState!.save();
+                              var noteModel = NoteMode(
+                                  title: titleController.text,
+                                  content: contentController.text,
+                                  date: DateTime.now().toString(),
+                                  color: Colors.blue.value);
+                              AddNoteCubit.get(context).addNote(noteModel);
+                            } else {
+                              autoValidateMode = AutovalidateMode.always;
+                              setState(() {});
+                            }
+                          },
+                        ),
+                        const SizedBox(
+                          height: 32,
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              )),
-        );
-      },
+                )),
+          );
+        },
+      ),
     );
   }
 }
