@@ -44,7 +44,11 @@ class _CustomNoteSheetState extends State<CustomNoteSheet> {
           return AbsorbPointer(
             absorbing: state is AddNoteLoading ? true : false,
             child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
+                padding:  EdgeInsets.only(
+                left : 16,
+                right : 16,
+                bottom : MediaQuery.of(context).viewInsets.bottom,
+                ),
                 child: SingleChildScrollView(
                   child: Form(
                     key: formKey,
@@ -75,7 +79,7 @@ class _CustomNoteSheetState extends State<CustomNoteSheet> {
                           color: AppColors.primary,
                         ),
                         const SizedBox(
-                          height: 128,
+                          height: 60,
                         ),
                         CustomButton(
                           isLoading: state is AddNoteLoading ? true : false,
@@ -95,7 +99,7 @@ class _CustomNoteSheetState extends State<CustomNoteSheet> {
                           },
                         ),
                         const SizedBox(
-                          height: 32,
+                          height: 16,
                         ),
                       ],
                     ),
