@@ -4,6 +4,7 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:notes_app/core/utils/colors.dart';
 import 'package:notes_app/core/utils/validator.dart';
 import 'package:notes_app/core/widgets/custom_text_form_field.dart';
+import 'package:notes_app/features/home/data/models/note_model.dart';
 import 'package:notes_app/features/home/presentation/view_models/cubit/add_notes_cubit/add_note_cubit.dart';
 import 'package:notes_app/features/home/presentation/view_models/cubit/add_notes_cubit/add_note_state.dart';
 import 'package:notes_app/features/home/presentation/views/widgets/custom_Button.dart';
@@ -78,6 +79,11 @@ class _CustomNoteSheetState extends State<CustomNoteSheet> {
                         onTap: () {
                           if (formKey.currentState!.validate()) {
                             formKey.currentState!.save();
+                            var noteModel = NoteMode(
+                                title: titleController.text,
+                                content: contentController.text,
+                                date: DateTime.now().toString(), color: Colors.blue.value);
+                            AddNoteCubit.get(context).addNote(noteModel);
                           } else {
                             autoValidateMode = AutovalidateMode.always;
                             setState(() {});

@@ -4,7 +4,6 @@ part 'note_model.g.dart';
 
 @HiveType(typeId: 0)
 class NoteMode extends HiveObject   {
-
   @HiveField(0)
   final String title;
   @HiveField(1)
