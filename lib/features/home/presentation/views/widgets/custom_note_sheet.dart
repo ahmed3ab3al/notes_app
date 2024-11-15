@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:notes_app/core/utils/colors.dart';
 import 'package:notes_app/core/utils/validator.dart';
 import 'package:notes_app/core/widgets/custom_text_form_field.dart';
@@ -86,10 +87,12 @@ class _CustomNoteSheetState extends State<CustomNoteSheet> {
                           onTap: () {
                             if (formKey.currentState!.validate()) {
                               formKey.currentState!.save();
+                              var date = DateTime.now();
+                              var formattedDate = DateFormat('yyyy-MM-dd').format(date);
                               var noteModel = NoteMode(
                                   title: titleController.text,
                                   content: contentController.text,
-                                  date: DateTime.now().toString(),
+                                  date: formattedDate,
                                   color: Colors.blue.value);
                               AddNoteCubit.get(context).addNote(noteModel);
                             } else {
