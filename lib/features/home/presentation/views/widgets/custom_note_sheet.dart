@@ -7,6 +7,7 @@ import 'package:notes_app/core/widgets/custom_text_form_field.dart';
 import 'package:notes_app/features/home/data/models/note_model.dart';
 import 'package:notes_app/features/home/presentation/view_models/cubit/add_notes_cubit/add_note_cubit.dart';
 import 'package:notes_app/features/home/presentation/view_models/cubit/add_notes_cubit/add_note_state.dart';
+import 'package:notes_app/features/home/presentation/view_models/cubit/read_notes_cubit/read_notes_cubit.dart';
 import 'package:notes_app/features/home/presentation/views/widgets/custom_Button.dart';
 
 class CustomNoteSheet extends StatefulWidget {
@@ -39,6 +40,8 @@ class _CustomNoteSheetState extends State<CustomNoteSheet> {
           }
           if (state is AddNoteSuccess) {
             Navigator.pop(context);
+            ReadNotesCubit.get(context).fetchNotes();
+
           }
         },
         builder: (context, state) {

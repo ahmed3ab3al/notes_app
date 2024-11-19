@@ -12,5 +12,6 @@ class ReadNotesCubit extends Cubit<ReadNotesState> {
   fetchNotes() {
     var box = Hive.box<NoteMode>('notes_box');
     notes = box.values.toList();
+    emit(ReadNotesSuccess());
   }
 }

@@ -15,7 +15,10 @@ class CustomNotesListView extends StatelessWidget {
         List<NoteMode> notes =ReadNotesCubit.get(context).notes!;
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 14),
-          child: ListView.builder(
+          child: notes.isEmpty ? const Center(child: Text('No notes yet',
+          style: TextStyle(
+            fontSize: 25
+          ),)) : ListView.builder(
             itemCount: notes.length,
             itemBuilder: (BuildContext context, int index) {
               return  Padding(
