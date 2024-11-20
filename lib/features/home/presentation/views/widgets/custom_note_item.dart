@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:notes_app/features/home/data/models/note_model.dart';
+import 'package:notes_app/features/home/presentation/view_models/cubit/read_notes_cubit/read_notes_cubit.dart';
 import 'package:notes_app/features/home/presentation/views/edit_view.dart';
 
 class CustomNoteItem extends StatelessWidget {
@@ -50,6 +51,7 @@ class CustomNoteItem extends StatelessWidget {
                 child: IconButton(
                   onPressed: () {
                     model.delete();
+                    ReadNotesCubit.get(context).fetchNotes();
                   },
                   icon: const Icon(
                     FontAwesomeIcons.trash,
