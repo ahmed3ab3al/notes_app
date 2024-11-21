@@ -8,6 +8,7 @@ import 'package:notes_app/features/home/data/models/note_model.dart';
 import 'package:notes_app/features/home/presentation/view_models/cubit/add_notes_cubit/add_note_cubit.dart';
 import 'package:notes_app/features/home/presentation/view_models/cubit/add_notes_cubit/add_note_state.dart';
 import 'package:notes_app/features/home/presentation/view_models/cubit/read_notes_cubit/read_notes_cubit.dart';
+import 'package:notes_app/features/home/presentation/views/widgets/colors_list_view.dart';
 import 'package:notes_app/features/home/presentation/views/widgets/custom_Button.dart';
 
 class CustomNoteSheet extends StatefulWidget {
@@ -83,7 +84,11 @@ class _CustomNoteSheetState extends State<CustomNoteSheet> {
                           color: AppColors.primary,
                         ),
                         const SizedBox(
-                          height: 60,
+                          height: 20,
+                        ),
+                        ColorsListView(),
+                        const SizedBox(
+                          height: 40,
                         ),
                         CustomButton(
                           isLoading: state is AddNoteLoading ? true : false,
