@@ -84,11 +84,11 @@ class _CustomNoteSheetState extends State<CustomNoteSheet> {
                           color: AppColors.primary,
                         ),
                         const SizedBox(
-                          height: 20,
+                          height: 30,
                         ),
                         ColorsListView(),
                         const SizedBox(
-                          height: 40,
+                          height: 30,
                         ),
                         CustomButton(
                           isLoading: state is AddNoteLoading ? true : false,
