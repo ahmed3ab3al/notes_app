@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:notes_app/features/home/presentation/view_models/cubit/add_notes_cubit/add_note_cubit.dart';
 import 'package:notes_app/features/home/presentation/views/widgets/item_color.dart';
 
 class ColorsListView extends StatefulWidget {
@@ -30,6 +31,7 @@ class _ColorsListViewState extends State<ColorsListView> {
               child: GestureDetector(
                 onTap: (){
                   setState(() {
+                    AddNoteCubit.get(context).color = colors[index];
                     currentIndex = index;
                   });
                 },
