@@ -6,6 +6,7 @@ import 'package:notes_app/core/widgets/custom_text_form_field.dart';
 import 'package:notes_app/features/home/data/models/note_model.dart';
 import 'package:notes_app/features/home/presentation/view_models/cubit/read_notes_cubit/read_notes_cubit.dart';
 import 'package:notes_app/features/home/presentation/views/widgets/custom_appbar.dart';
+import 'package:notes_app/features/home/presentation/views/widgets/edit_colors_list_view.dart';
 
 class EditViewBody extends StatefulWidget {
  const EditViewBody({super.key, required this.model,});
@@ -66,6 +67,12 @@ class _EditViewBodyState extends State<EditViewBody> {
             hintText: widget.model.content,
             maxLines: 5,
               color:AppColors.primary,),
+          const SizedBox(
+            height: 16,
+          ),
+          EditColorsListView(
+            note: widget.model,
+          ),
         ],
       )),
     );
