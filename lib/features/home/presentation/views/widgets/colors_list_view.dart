@@ -44,8 +44,6 @@ class _ColorsListViewState extends State<ColorsListView> {
           },
       itemCount: colors.length,
         scrollDirection: Axis.horizontal,
-
-
       ),
     );
   }
