@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/constants.dart';
+import 'package:notes_app/views/widgets/custom_button.dart';
 import 'package:notes_app/views/widgets/custom_field.dart';
 
 class AddNoteBottomSheet extends StatelessWidget {
@@ -43,6 +44,17 @@ class AddNoteBottomSheet extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
             ),
             cursorColor: kPrimaryColor,
+          ),
+          CustomButton(
+            text: 'Add',
+            fontWeight: FontWeight.bold,
+            width: double.infinity,
+            height: 55,
+            ontap: () {},
+            radius: 8,
+            textSize: 20,
+            backgroundColor: kPrimaryColor,
+            textColor: Colors.black,
           ),
         ],
       ),
