@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 class CustomField extends StatelessWidget {
-  final IconData prefixIcon;
+  final Widget? prefixIcon;
   final Widget? suffixIcon;
-  final String label;
+  final String? label;
   final String? hint;
+  final int? maxLines;
   final bool obsecure;
   final TextStyle? hintStyle;
   final TextStyle? labelStyle;
@@ -12,7 +13,7 @@ class CustomField extends StatelessWidget {
   final ValueChanged<String>? onSubmited;
   final bool? filled;
   final Color? filledColor;
-  final EdgeInsetsGeometry? padding;
+  final EdgeInsetsGeometry? contentPadding;
   final Color? cursorColor;
   final Color? prefixIconColor;
   final Color? suffixIconColor;
@@ -21,7 +22,7 @@ class CustomField extends StatelessWidget {
   final InputBorder? border;
   final InputBorder? enabledBorder;
   final TextInputType type;
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final TextInputAction? action;
   final FormFieldValidator validator;
   final GestureTapCallback? onTap;
@@ -30,11 +31,11 @@ class CustomField extends StatelessWidget {
   const CustomField({
     this.floatingLabelStyle,
     super.key,
-    required this.controller,
+    this.controller,
     required this.validator,
     required this.type,
-    required this.label,
-    required this.prefixIcon,
+    this.prefixIcon,
+    this.label,
     this.onTap,
     this.obsecure = false,
     this.onchange,
@@ -48,17 +49,20 @@ class CustomField extends StatelessWidget {
     this.filledColor,
     this.cursorColor,
     this.onSubmited,
-    this.padding,
+    this.contentPadding,
     this.focusedBorder,
     this.focusedErrorBorder,
     this.border,
-    this.enabledBorder, this.prefixIconColor, this.suffixIconColor,
+    this.enabledBorder,
+    this.prefixIconColor,
+    this.suffixIconColor, this.maxLines,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       cursorColor: cursorColor,
+      maxLines: maxLines,
       decoration: InputDecoration(
         suffixIcon: suffixIcon,
         hintText: hint,
@@ -66,11 +70,11 @@ class CustomField extends StatelessWidget {
         hintStyle: hintStyle,
         filled: filled,
         fillColor: filledColor,
-        prefixIcon: Icon(prefixIcon),
+        prefixIcon: prefixIcon,
         prefixIconColor: prefixIconColor,
         suffixIconColor: suffixIconColor,
         labelText: label,
-        contentPadding: padding,
+        contentPadding: contentPadding,
         border: border,
         focusedBorder: focusedBorder,
         enabledBorder: enabledBorder,
