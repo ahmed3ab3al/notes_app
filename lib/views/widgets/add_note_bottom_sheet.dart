@@ -10,53 +10,56 @@ class AddNoteBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(20),
-      child: Column(
-        children: [
-          CustomField(
-            contentPadding: EdgeInsets.symmetric(horizontal: 8, vertical: 24),
-            validator: (value) {},
-            type: TextInputType.text,
-            hint: 'Title',
-            hintStyle: TextStyle(color: kPrimaryColor),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.white),
-              borderRadius: BorderRadius.circular(12),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            CustomField(
+              contentPadding: EdgeInsets.symmetric(horizontal: 8, vertical: 24),
+              validator: (value) {},
+              type: TextInputType.text,
+              hint: 'Title',
+              hintStyle: TextStyle(color: kPrimaryColor),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.white),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.white),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              cursorColor: kPrimaryColor,
             ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.white),
-              borderRadius: BorderRadius.circular(12),
+            SizedBox(height: 32),
+            CustomField(
+              maxLines: 5,
+              validator: (value) {},
+              type: TextInputType.text,
+              hint: 'content',
+              hintStyle: TextStyle(color: kPrimaryColor),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.white),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.white),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              cursorColor: kPrimaryColor,
             ),
-            cursorColor: kPrimaryColor,
-          ),
-          SizedBox(height: 64),
-          CustomField(
-            maxLines: 5,
-            validator: (value) {},
-            type: TextInputType.text,
-            hint: 'content',
-            hintStyle: TextStyle(color: kPrimaryColor),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.white),
-              borderRadius: BorderRadius.circular(12),
+            SizedBox(height: 16),
+            CustomButton(
+              text: 'Add',
+              fontWeight: FontWeight.bold,
+              width: double.infinity,
+              height: 55,
+              ontap: () {},
+              radius: 8,
+              textSize: 20,
+              backgroundColor: kPrimaryColor,
+              textColor: Colors.black,
             ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.white),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            cursorColor: kPrimaryColor,
-          ),
-          CustomButton(
-            text: 'Add',
-            fontWeight: FontWeight.bold,
-            width: double.infinity,
-            height: 55,
-            ontap: () {},
-            radius: 8,
-            textSize: 20,
-            backgroundColor: kPrimaryColor,
-            textColor: Colors.black,
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
