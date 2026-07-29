@@ -5,7 +5,7 @@ import 'package:notes_app/views/widgets/custom_field.dart';
 
 class AddNoteBottomSheet extends StatelessWidget {
   const AddNoteBottomSheet({super.key});
-
+ 
   @override
   Widget build(BuildContext context) {
     return Padding(
